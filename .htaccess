@@ -1,0 +1,33 @@
+# ===============================================================
+# ESTE BLOQUE SE MANTIENE - Es una medida de seguridad importante
+# para proteger tu archivo .env y otros archivos ocultos.
+# ===============================================================
+<Files .*>
+    # Apache 2.2
+    <IfModule !mod_authz_core.c>
+        Order deny,allow
+        Deny from all
+    </IfModule>
+    # Apache 2.4
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+</Files>
+
+# ===============================================================
+# ESTA ES LA SECCIÓN CORREGIDA
+# Reemplaza la redirección por una reescritura interna a la
+# carpeta /public de Laravel.
+# ===============================================================
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+
+# ===============================================================
+# ESTE BLOQUE SE MANTIENE - Es generado por cPanel para
+# configurar la versión de PHP y no debe ser editado.
+# ===============================================================
+# php -- BEGIN cPanel-generated handler, do not edit
+# This domain inherits the “PHP” package.
+# php -- END cPanel-generated handler, do not edit
