@@ -1,6 +1,7 @@
 <?php
 // routes/web.php
 
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
 // Ruta para la página de Inicio
@@ -22,3 +23,5 @@ Route::get('/nosotros', function () {
 Route::get('/contacto', function () {
     return view('contacto'); // Carga la vista 'contacto.blade.php'
 })->name('contacto');
+
+Route::post('/contacto/enviar', [ContactController::class, 'enviar'])->name('contacto.enviar');
