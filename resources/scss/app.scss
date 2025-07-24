@@ -1,0 +1,96 @@
+@use "sass:color";
+
+// 1. Importaciones (Fuentes y Bootstrap)
+// Primero, importa las fuentes de Google.
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&display=swap');
+
+// Luego, importa las variables y componentes de Bootstrap que necesites (opcional, pero buena práctica).
+// @import 'bootstrap/scss/functions';
+// @import 'bootstrap/scss/variables';
+// @import 'bootstrap/scss/mixins';
+
+// 2. Variables Personalizadas (Opcional, pero recomendado)
+// Define tus colores corporativos para reutilizarlos fácilmente.
+$primary-color: #1A237E; // Azul oscuro
+$secondary-color: #FF6F00; // Naranjo
+$dark-color: #212529;
+$light-color: #FFFFFF;
+
+// 3. Estilos Generales
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, .navbar-brand {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+// 4. Estilos de Componentes (Aquí usamos anidamiento)
+// Estilo para el logo DENTRO del navbar
+.navbar-logo {
+    height: 70px; // Altura ideal para un navbar de 70px
+}
+
+// Estilos del Navbar limpios y sin conflictos
+.navbar {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #dee2e6;
+    height: 70px; // Altura fija y controlada
+}
+
+// Botones
+.btn-primary {
+    background-color: $secondary-color;
+    border-color: $secondary-color;
+    &:hover {
+        background-color: color.adjust($secondary-color, $lightness: -10%); // <-- Corregido
+        border-color: color.adjust($secondary-color, $lightness: -10%);     // <-- Corregido
+    }
+}
+
+// Footer
+.footer {
+    background-color: $dark-color;
+    color: $light-color;
+    padding: 40px 0;
+}
+
+// Hero Carousel
+.hero-carousel {
+    .carousel-item {
+        height: 85vh;
+        min-height: 500px;
+        background-color: #333;
+
+        img {
+            object-fit: cover;
+            object-position: center;
+            height: 100%;
+            width: 100%;
+            filter: brightness(50%);
+        }
+    }
+
+    .carousel-caption {
+        top: 50%;
+        transform: translateY(-50%);
+        bottom: auto;
+        text-align: center;
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+        }
+    }
+
+    // Media Query anidada para responsive
+    @media (max-width: 768px) {
+        .carousel-item {
+            height: 70vh;
+        }
+        .carousel-caption h1 {
+            font-size: 2.5rem;
+        }
+    }
+}
